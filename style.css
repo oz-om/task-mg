@@ -113,7 +113,6 @@ body {
 .tasks {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, auto));
-  
 }
 .box-task {
   min-height: 150px;
@@ -130,16 +129,19 @@ body {
 .box-task .title {
   display: flex;
   justify-content: space-between;
+  position: absolute;
+  width: 100%;
 }
-.box-task .task-title {
+.box-task .title > .task-title {
   color: #004E7A;
-  border: 1px solid red;
   line-height: 30px;
   font-weight: 600;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  width: 110px;
+  width: 85%;
+  padding-top: 15px;
+  padding-left: 5px
 }
 .box-task ion-icon {
   color: #C70D35;
@@ -154,7 +156,7 @@ body {
   color: #00447AE8;
   font-weight: 500;
   font-size: 15px;
-  padding: 10px 5px;
+  padding: 40px 5px 10px;
 }
 .box-task .details {
   display: flex;
