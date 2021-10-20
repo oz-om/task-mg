@@ -8,6 +8,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  user-select: none;
 }
 
 body {
@@ -110,6 +111,9 @@ body {
   height: calc(100vh - 44px);
   overflow-y: scroll;
 }
+.content::-webkit-scrollbar {
+  display: none;
+}
 .tasks {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, auto));
@@ -167,16 +171,34 @@ body {
 .box-task .status {
   display: grid;
   place-content: center;
-}
-.box-task .status input {
+  position: relative;
   width: 15px;
   height: 15px;
-  border: 1px solid #008EFF;
-  border-radius: 50%;
-  color: blue;
+
 }
-.box-task .status input:checked {
-  background-color: red;
+.box-task .status input {
+  display: none;
+}
+.box-task .status label {
+  width: 15px;
+  height: 15px;
+  border: 1.5px solid #00987A;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.box-task .status label ion-icon {
+  color: #00987A;
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  visibility: hidden;
+  transition: all .2s;
+  transform: scale(0);
+}
+
+.box-task .status input:checked + label ion-icon {
+  visibility: visible;
+  transform: scale(1);
 }
 .box-task .date {
   font-size: 10px;
