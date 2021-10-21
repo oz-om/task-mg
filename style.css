@@ -82,10 +82,10 @@ body {
   right: 5px;
   width: 0;
   border-radius: 5px 0 5px 5px;
-  background-color: #DFF4FF;
+  background-color: #E3F2FF;
   overflow: hidden;
   transition: width .3s linear;
-  
+  z-index: 999;
 }
 .open-list {
   width: 150px;
@@ -95,17 +95,21 @@ body {
   padding: 2.5px 20px;
   border: 1px solid #0AA7FF;
   border-radius: 5px;
-  margin: 2.5px 0;
+  margin-top: 2.5px;
   color: #0074B5;
   transition: background-color .3s linear;
   font-weight: 500;
   cursor: pointer;
+  position: relative;
+  z-index: 1000;
 }
 .item:hover {
   background-color: #0074B5;
   color: #FFFFFF;
   border-color: #fff;
 }
+
+
 .content {
   width: 100%;
   height: calc(100vh - 44px);
@@ -116,19 +120,26 @@ body {
 }
 .tasks {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, auto));
+  grid-template-columns: repeat(auto-fit, minmax(219px, auto));
+  place-content: center
 }
 .box-task {
   min-height: 150px;
+  max-width: 200px;
   border: 1px solid #0087D2;
   padding: 10px;
   border-radius: 10px;
   background-color: #17ACFF14;
   display: grid;
-  grid-template-rows: auto auto auto;
+  grid-template-rows: auto 1fr auto;
   margin: 10px;
   background-color: #B5125F17;
   position: relative;
+  box-shadow: 0 5px 10px 1px #D5D5D5;
+}
+.box-task.complet {
+  background-color: #00C7941F;
+  opacity: 0.6;
 }
 .box-task .title {
   display: flex;
@@ -140,6 +151,7 @@ body {
   color: #004E7A;
   line-height: 30px;
   font-weight: 600;
+  text-align: center;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -160,13 +172,16 @@ body {
   color: #00447AE8;
   font-weight: 500;
   font-size: 15px;
-  padding: 40px 5px 10px;
+  padding: 45px 5px 10px;
+  
 }
 .box-task .details {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid red;
+  height: 17px;
+  position: relative;
+  margin-top: auto;
 }
 .box-task .status {
   display: grid;
@@ -204,6 +219,31 @@ body {
   font-size: 10px;
   font-weight: 500;
   color: #00447A8F
+}
+
+.add-box {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  top: calc(100% - 70px);
+  left: calc(100% - 70px);
+}
+.add-box .add {
+  background-color: #00A4FF;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+}
+.add-box .add ion-icon {
+  position: absolute;
+  font-size: 73px;
+  top: -6.7px;
+  left: -6.3px;
+  color: #92D8FF;
+  cursor: pointer;
 }
 
 
