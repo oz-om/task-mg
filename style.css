@@ -17,14 +17,16 @@ body {
 }
 
 .container {
-  width: 90vmin;
+  max-width: 151vmin;
+  min-width: 212.188px;
   background-color: #fff;
   padding: 5px 0 0;
   display: grid;
   place-items: center;
   position: relative;
   margin: auto;
-  border: 1px solid skyblue
+  border: 1px solid skyblue;
+  overflow: hidden;
 }
 .header {
   width: 100%;
@@ -71,6 +73,7 @@ body {
 .icon {
   display: grid;
   place-items: center;
+  cursor: pointer;
 }
 .icon ion-icon {
   font-size: 25px;
@@ -244,11 +247,90 @@ body {
   left: -6.3px;
   color: #92D8FF;
   cursor: pointer;
+  transition: transform .3s linear;
+}
+.add-box .add ion-icon:hover {
+  transform: rotate(180deg);
 }
 
+.add-container {
+  background-color: #272727;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  display: none;
+}
+.add-container.visible {
+  display: block;
+}
+.add-content {
+  position: relative;
+  height: 100%;
+  overflow-y: scroll;
+}
+.add-content::-webkit-scrollbar {
+  display: none;
+}
+.add-content > input {
+  display: block;
+  outline: none;
+  border: none;
+}
+.add-content > input::placeholder{
+  color: rgb(140, 140, 140);
+}
+.add-content .task-to-do-title {
+  height: 60px;
+  width: 80%;
+  font-size: 25px;
+  font-weight: 600;
+  padding: 1px 10px;
+  background-color: transparent;
+  color: #e8f9fc;
+  letter-spacing: 1.5px;
+}
+.add-content .task-to-do {
+  height: calc(100% - 60px);
+  background-color: transparent;
+  position: absolute;
+  width: 100%;
+  font-size: 20px;
+  font-weight: 600;
+  color: #e8f9fc;
+  padding: 5px 20px;
+  outline: none;
+  border: none;
+}
+.task-to-do::-webkit-scrollbar {
+  display: none;
+}
 
-
-
+.add-content .controls{
+  color: white;
+  width: 20%;
+  padding: 10px;
+  position: relative;
+  margin: 5px;
+  margin-left: auto;
+  position: absolute;
+  right: 0;
+  display: flex;
+  justify-content: space-evenly;
+}
+.add-content .controls .aplly {
+}
+.add-content .aplly ion-icon,
+.add-content .discard ion-icon {
+  color: rgb(1, 255, 208);
+  --ionicon-stroke-width: 90px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.add-content .discard ion-icon {
+  color: rgb(255, 135, 135);
+  --ionicon-stroke-width: 70px;
+}
 
 
 
