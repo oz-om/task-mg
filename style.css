@@ -258,10 +258,12 @@ body {
   width: 100%;
   height: 100%;
   position: absolute;
-  top: 0;
+  top: 20px;
   display: none;
+  transition: top 5s linear;
 }
 .add-container.visible {
+  top: 0;
   display: block;
 }
 .add-content {
