@@ -26,7 +26,20 @@ let addBtn = document.querySelector('.add');
 addBtn.onclick = function(){
   document.querySelector('.add-container').classList.add('visible')
 }
+let discardBtn = document.querySelector('.discard');
+discardBtn.onclick = function(){
+  document.querySelector('.add-container').classList.remove('visible')
+}
 
+let taskData = {
+  title: 'tist',
+  task: 'task to do',
+  stast: 'not-copmplet',
+  id: '21475412875',
+  date: '11/22/21',
+} 
+
+console.log(taskData)
 
 let labls = document.querySelectorAll('label');
 labls.forEach(label => {
