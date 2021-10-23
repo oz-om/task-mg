@@ -26,20 +26,37 @@ let addBtn = document.querySelector('.add');
 addBtn.onclick = function(){
   document.querySelector('.add-container').classList.add('visible')
 }
-let discardBtn = document.querySelector('.discard');
-discardBtn.onclick = function(){
+function discard() {
   document.querySelector('.add-container').classList.remove('visible')
 }
-
+let discardBtn = document.querySelector('.discard');
+discardBtn.onclick = function(){
+  discard()
+}
+let date = new Date;
 let taskData = {
   title: 'tist',
   task: 'task to do',
   stast: 'not-copmplet',
-  id: '21475412875',
-  date: '11/22/21',
-} 
+  id: date.getTime(),
+  date: `${date.getUTCHours()}:${date.getUTCMinutes()} ${date.toLocaleDateString()}`,
+}
 
-console.log(taskData)
+console.log(taskData.date)
+console.log(taskData.id)
+
+let apllay = document.querySelector('.aplly');
+
+apllay.onclick = function() {
+  craeteTask()
+  discard()
+}
+
+function craeteTask() {
+  let test = `<h1>hello</h1>`;
+
+  document.querySelector('.tasks').innerHTML += test
+}
 
 let labls = document.querySelectorAll('label');
 labls.forEach(label => {
