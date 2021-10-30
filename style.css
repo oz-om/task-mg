@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Vollkorn+SC:wght@400;600;700;900&family=Roboto:wght@100;300;400;500;700;900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Vollkorn+SC:wght@400;600;700;900&family=Roboto:wght@100;300;400;500;700;900&display=swap'); */
 :root {
   --value : 0px;
 }
@@ -322,8 +322,7 @@ body {
   display: flex;
   justify-content: space-evenly;
 }
-.add-content .controls .aplly {
-}
+
 .add-content .aplly ion-icon,
 .add-content .discard ion-icon {
   color: rgb(1, 255, 208);
