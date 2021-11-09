@@ -26,9 +26,52 @@ document.addEventListener("click", function (e) {
   }
 });
 
+let rm_complete = document.querySelector('.clear-comp');
+rm_complete.onclick = ()=>{
+  let done = document.querySelectorAll('.tasks .complet');
+  tasksPlace = tasksPlace.filter(task => {
+    return task.state != 'complete'                     
+  })
+  saveToStock(tasksPlace)
+  done.forEach(done => {
+    done.remove()
+  });
+  runCounter();
+  closeMenu();
+  ifEmpty();
+};
+let clear_all = document.querySelector('.clear-all');
+clear_all.onclick = function() {
+  tasksPlace = [];
+  saveToStock(tasksPlace)
+  let tasks = document.querySelectorAll('.tasks .box-task ');
+  tasks.forEach(task => {
+    task.remove()
+  });
+  runCounter();
+  closeMenu();
+  ifEmpty();
+}
+
+function ifEmpty(){
+  let empty = document.querySelector('.empty');
+  if (!tasks.hasChildNodes()) {
+    empty.style.display = 'grid'
+  } else empty.style.display = 'none'
+}
+
 let addBtn = document.querySelector(".add");
 addBtn.onclick = function () {
   document.querySelector(".add-container").classList.add("visible");
+  setTimeout(() => {
+    task_title_toDo.focus()
+  }, 30);
+  task_title_toDo.addEventListener('keyup',(e)=>{
+    if (e.key == 'Enter') {
+      task_toDo.focus()
+    }
+  });
+  ifEmpty();
 };
 function discard() {
   document.querySelector(".add-container").classList.remove("visible");
@@ -53,7 +96,16 @@ apllay.onclick = function () {
   checkInput();
   addToPlace();
   discard();
+  ifEmpty();
 };
+let addContainer = document.querySelector('.add-container');
+addContainer.addEventListener('keyup', (e)=>{
+  e.stopPropagation()
+  if (e.key == 'ArrowRight') {
+    apllay.click()
+  }
+});
+
 let tasksPlace = [];
 let task_title_toDo = document.querySelector(".task-to-do-title");
 let task_toDo = document.querySelector(".task-to-do");
@@ -111,9 +163,9 @@ function craeteTask(tasksplace) {
 
     box_task.appendChild(desc_hint);
     // max lengh of text is 172
-    if (desc_hint.textContent.length >= 172) {
+    if (desc_hint.textContent.length >= 165) {
       let clone = document.createTextNode(desc_hint).cloneNode(true);
-      desc_hint.textContent = desc_hint.textContent.substring(0, 172) + ".....";
+      desc_hint.textContent = desc_hint.textContent.substring(0, 165) + ".....";
     }
 
     let details = document.createElement("div");
@@ -152,7 +204,11 @@ function saveToStock(tasksPlace){
 }
 
 document.addEventListener("click", function (e) {
-  e.target.stopPropagation;
+  
+  if (e.target.classList.contains('box-task') || e.target.classList.contains('task-title') || e.target.classList.contains('desc-hint')) {
+    
+  }
+
   if (e.target.classList.contains("removeTsk")) {
     tasksPlace = tasksPlace.filter(task => {
       return task.id == e.target.parentElement.parentElement.dataset.id ? '':task                     
@@ -160,6 +216,7 @@ document.addEventListener("click", function (e) {
     e.target.parentElement.parentElement.remove();
     saveToStock(tasksPlace)
     runCounter()
+    ifEmpty()
   }
 
   function getNum(text) {
@@ -214,3 +271,6 @@ function runCounter(){
   document.querySelector('.counter .not-complet span').textContent = not.length;
   document.querySelector('.counter .complet span').textContent = done.length
 }
+
+
+

@@ -1,71 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HTML</title>
+    <!-- Custom Styles -->
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>HTML</title>
-  <!-- Custom Styles -->
-  <!-- stylesheet -->
-  <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-  <div class="container">
-    <div class="header">
-      <div class="counter">
-        <div class="complet">
-          <ion-icon name="checkmark-done-circle-outline"></ion-icon>
-          <span>125</span>
-        </div>
-        <div class="not-complet">
-          <ion-icon name="time-outline"></ion-icon>
-          <span>19</span>
-        </div>
-      </div>
-      <div class="menu">
-        <div class="icon">
-          <ion-icon name="menu-outline"></ion-icon>
-        </div>
-        <ul class="list">
-          <li class="item">conlors</li>
-          <li class="item">remove complet</li>
-          <li class="item">clear all</li>
-        </ul>
-      </div>
-    </div>
-    <div class="content">
-      <div class="tasks">
-        
-      </div>
-      
-      <div class="add-box">
-        <div class="add">
-          <ion-icon name="add-circle"></ion-icon>
-        </div>
-      </div>
-      
-      <div class="add-container ">
-        <div class="add-content">
-          <div class="controls">
-            <div class="discard">
-              <ion-icon name="exit-outline"></ion-icon>
-            </div>
-            <div class="aplly">
-              <ion-icon name="checkmark-outline"></ion-icon>
-            </div>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="counter">
+          <div class="complet">
+            <ion-icon name="checkmark-done-circle-outline"></ion-icon>
+            <span>0</span>
           </div>
-          <input type="text" placeholder="Title" class="task-to-do-title">
-          <textarea class="task-to-do" placeholder="task to do "></textarea>
+          <div class="not-complet">
+            <ion-icon name="time-outline"></ion-icon>
+            <span>0</span>
+          </div>
+        </div>
+        <div class="menu">
+          <div class="icon">
+            <ion-icon name="menu-outline"></ion-icon>
+          </div>
+          <ul class="list">
+            <li class="item theme">theme</li>
+            <li class="item clear-comp">remove complet</li>
+            <li class="item clear-all">clear all</li>
+          </ul>
         </div>
       </div>
+      <div class="content">
+        <div class="tasks">
+        </div>
+        <div class="empty">
+          <img src="svg/empty_list.svg" alt="">
+        </div>
+        <div class="add-box">
+          <div class="add">
+            <ion-icon name="add-circle"></ion-icon>
+          </div>
+        </div>
 
+        <div class="add-container">
+          <div class="add-content">
+            <div class="controls">
+              <div class="discard">
+                <ion-icon name="exit-outline"></ion-icon>
+              </div>
+              <div class="aplly">
+                <ion-icon name="checkmark-outline"></ion-icon>
+              </div>
+            </div>
+            <input type="text" placeholder="Title" class="task-to-do-title" />
+            <textarea class="task-to-do" placeholder="task to do "></textarea>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  <script src="main.js"></script>
-</body>
-
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="main.js"></script>
+  </body>
 </html>
