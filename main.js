@@ -113,7 +113,8 @@ let task_toDo = document.querySelector(".task-to-do");
 if (localStorage.getItem('tasks')) {
   tasksPlace = JSON.parse(localStorage.getItem('tasks'));
   craeteTask(tasksPlace);
-  runCounter()
+  runCounter();
+  ifEmpty();
 }
 
 function addToPlace() {
