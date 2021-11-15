@@ -2,6 +2,7 @@
 let menu = document.querySelector(".icon");
 let menuIcon = document.querySelector(".icon ion-icon ");
 let list = document.querySelector(".list");
+let colors = document.querySelectorAll('.list .theme .colors li');
 
 // body elements
 let tasks = document.querySelector(".tasks");
@@ -25,6 +26,46 @@ document.addEventListener("click", function (e) {
     closeMenu();
   }
 });
+
+
+let arrOfColors = [
+  {colThem:'rgb(147, 255, 223)',colText: 'rgb(6, 58, 44)'},
+  {colThem:'rgb(253, 241, 227)',colText: 'rgb(223, 79, 2)'},
+  {colThem:'rgb(240, 227, 253)',colText: 'rgb(124, 2, 223)'},
+  {colThem:'rgb(253, 227, 241)',colText: 'rgb(223, 2, 113)'}
+]
+for (let i = 1; i < colors.length; i++) {
+  const element = colors[i];
+  element.style.border = '1px solid #fff'
+  element.style.backgroundColor = arrOfColors[i-1].colText
+  element.dataset.colTH = arrOfColors[i-1].colThem
+  element.dataset.colTX = arrOfColors[i-1].colText
+}
+let usedTheme;
+
+colors.forEach(color => {
+  color.addEventListener('click', (e)=> {
+    if (e.target.dataset.colTH == undefined) {
+      document.documentElement.style.setProperty('--theme-color','rgb(255, 255, 255)');
+      document.documentElement.style.setProperty('--text-color','rgb(0, 153, 255)');
+      usedTheme = ['rgb(255, 255, 255)','rgb(0, 153, 255)']
+      saveTheme(usedTheme)
+    } else {
+      document.documentElement.style.setProperty('--theme-color',e.target.dataset.colTH);
+      document.documentElement.style.setProperty('--text-color',e.target.dataset.colTX);
+      usedTheme = [e.target.dataset.colTH,e.target.dataset.colTX]
+      saveTheme(usedTheme)
+    }
+  });
+});
+function saveTheme(usedTheme){
+  localStorage.setItem('theme',JSON.stringify(usedTheme))
+}
+if (localStorage.getItem('theme')) {
+  usedTheme = JSON.parse(localStorage.getItem('theme'))
+  document.documentElement.style.setProperty('--theme-color',usedTheme[0]);
+  document.documentElement.style.setProperty('--text-color',usedTheme[1]);
+}
 
 let rm_complete = document.querySelector('.clear-comp');
 rm_complete.onclick = ()=>{
